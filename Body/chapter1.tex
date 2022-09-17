@@ -1,0 +1,80 @@
+\documentclass{../Main/main.tex}{subfiles}
+
+\begin{document}
+
+\chapter{CHAPTERNAME}\label{CHAPTERLABEL}
+
+\section{SECTIONNAME}\label{SECTIONLABEL}
+
+THIS IS A SECTION
+
+Hey you can cite stuff with \verb!\cite[paragraph info]{key}!\cite[blabla]{mycitation}
+
+\begin{figure}[H]
+\centering
+\fbox{
+    \includegraphics[width=0.75\textwidth]{../resources/HochschuleMuenchenLogo-1200x521.png}
+}
+\captionof{figure}{This is a figure}\label{FIGURELABEL}
+\end{figure}
+
+\begin{table}[H]
+\centering
+    \begin{tabular}{|l|c|r|}
+        \hline
+        \textbf{Vert1}&\textbf{Vert2} & \textbf{Vert3}\Tstrut\Bstrut\\
+        \hline
+        blabla & blabla & blabla\Tstrut\\
+        blabla & blabla & blabla\\
+        blabla & blabla & blabla\Bstrut\\
+        \hline
+    \end{tabular}
+\captionof{table}{This is a table}\label{TABLELABEL}
+\end{table}
+
+% NEW SECTION
+\section{SECTIONNAME}
+
+You can refer to labels with \verb!\ref{label}! (S. \ref{SECTIONLABEL}).
+This works for any label
+
+Hey look a listing:
+
+\begin{lstlisting}[language=Python,caption=DPS variable Instantiations,firstnumber=58]
+# dps = detections per second
+dps = [0,0,0,0]
+dps_stamp = datetime.datetime.now()
+
+while True:\end{lstlisting}
+
+You can also do inline listing with \verb!\lstinline{}! which looks like this:\\
+\lstinline{some code thingy}\\
+
+You can use glossary entries and acronyms in text. \verb!\acrlong{key}! prints the long
+version of an acronym (\acrlong{acr}), \verb!\acrshort{}! prints the acronym itself (\acrshort{acr}).
+With \verb!gls{}! (\gls{acronym}) and \verb!\Gls{}! (\Gls{acronym}) you can print glossary entries.
+
+This is an item list
+
+\begin{itemize}
+    \item 2 cm x 2 cm mit 2 cm weißem Rand
+    \item 4 cm x 4 cm mit 1 cm weißem Rand
+    \item 6 cm x 6 cm mit 0,5 cm weißem Rand
+\end{itemize}
+
+Oh wow, look! A multi image Figure
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \subfloat[Chalpr SX-2]{
+            \includegraphics[width=0.45\textwidth]{../resources/HochschuleMuenchenLogo-1200x521.png}
+        }
+        \subfloat[Logitech C920]{
+            \includegraphics[width=0.45\textwidth]{../resources/HochschuleMuenchenLogo-1200x521.png}
+        }
+    }
+    \captionof{figure}{Multifig}
+\end{figure}
+
+\end{document}

@@ -1,0 +1,14 @@
+**/*.acn
+**/*.acr
+**/*.alg
+**/*.aux
+**/*.glg
+**/*.glo
+**/*.gls
+**/*.ist
+**/*.lof
+**/*.log
+**/*.lot
+**/*.out
+**/*.synctex.gz
+**/*.toc
