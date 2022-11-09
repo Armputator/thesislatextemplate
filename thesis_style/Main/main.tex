@@ -170,17 +170,17 @@ numbers = noendperiod,
 \begin{document}
 	\pagenumbering{gobble}
 	% insert Titlepage
-	\subfile{../preamble/titlepage}
+	\subfile{../Preamble/Titlepage}
 
-	\subfile{../preamble/first}
+	\subfile{../Preamble/First}
 
 	\includepdf{../resources/Erklaerung_Bachelorarbeit.pdf}
 
 	% insert Abstract
     \section*{Kurzzusammenfassung}
-	\subfile{../preamble/abstract-de}
+	\subfile{../Preamble/Abstract-DE}
     \section*{Abstract}
-    \subfile{../preamble/abstract-en}
+    \subfile{../Preamble/Abstract-EN}
 
     \clearpage
 
@@ -189,15 +189,15 @@ numbers = noendperiod,
     \clearpage
 
 	\pagenumbering{arabic}
-	\subfile{../body/introduction}
+	\subfile{../Body/introduction}
 
-	\subfile{../body/chapter1}
+	\subfile{../Body/chapter1}
 
-    \subfile{../body/chapter2}
+    \subfile{../Body/chapter2}
 
-	\subfile{../body/conclusion}
+	\subfile{../Body/conclusion}
 
-    \subfile{../body/appendix}
+    \subfile{../Body/appendix}
     \clearpage
     %\printglossaries
 	\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
