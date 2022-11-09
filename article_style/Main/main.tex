@@ -36,6 +36,9 @@ numbers = noendperiod,
 \usepackage{setspace}
 % pdf package----------------
 \usepackage{pdfpages}
+% multi column text
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
 % show lof, lot and bib in toc------------
 \usepackage{tocbibind}
 % glossary------------
@@ -72,7 +75,7 @@ numbers = noendperiod,
 \geometry{
     a4paper,
     total={170mm,257mm},
-    inner=30mm,
+    inner=25mm,
     outer=25mm,
     top=25mm,
     bottom=20mm,
@@ -91,28 +94,26 @@ numbers = noendperiod,
 
 %--------------------------------------------%CHAPTER TITLE SETUP---------------------------------------------
 
-\titleformat{\chapter}[display]
-  {\Huge\bfseries}
-  {}
-  {0pt}
-  {\thechapter.\ }
+\makeatletter
+\renewcommand\chapter{\thispagestyle{plain}%
+\global\@topnum\z@
+\@afterindentfalse
+\secdef\@chapter\@schapter}
+\makeatother
+
+\titleformat{\chapter}[hang]
+    {\LARGE\bfseries}
+    {}
+    {0pt}
+    {\thechapter.\ }
+
+\titlespacing{\chapter}{0pt}{1cm}{1cm}
 
 \titleformat{name=\chapter,numberless}[display]
-  {\Huge\bfseries}
+  {\large\bfseries}
   {}
   {0pt}
   {}
-
-%--------------------------------------------%LoFT SETUP---------------------------------------------
-
-\newcommand{\listfootnotesname}{Fussnotenverzeichnis}% 'List of Footnotes' title
-\newlistof[chapter]{footnotes}{fnt}{\listfootnotesname}% New 'List of...' for footnotes
-\let\oldfootnote\footnote % Save the old \footnote{...} command
-\renewcommand\footnote[1]{% Redefine the new footnote to also add 'List of Footnote' entries.
-    \refstepcounter{footnotes}% Add and step a reference to the footnote/counter.
-    \oldfootnote{#1}% Make a regular footnote.
-    \addcontentsline{fnt}{footnotes}{\protect \numberline{\thefootnotes}#1}% Add the 'List of...' entry.
-}
 
 %--------------------------------------------%LISTINGS SETUP---------------------------------------------
 \definecolor{lst_linenumbers}{rgb}{0.2, 0.2, 0.2}
@@ -158,62 +159,47 @@ numbers = noendperiod,
 %--------------------------------------------% GLOSSARY ENTRIES---------------------------------------------
 
 \newglossaryentry{acronym}{
-    name={acronym},
-    description={An Acronym is an Abbreviation for a long word or term derived from Letters in it}
+name={acronym},
+description={An Acronym is an Abbreviation for a long word or term derived from Letters in it}
 }
 
 %--------------------------------------------%TITLE---------------------------------------------
-\title{Thesis Title}
+\title{TITLE}
 \author{FIRSTNAME LASTNAME}
 \date{\currenttime}
 %--------------------------------------------%BEGIN---------------------------------------------
 \begin{document}
-	\pagenumbering{gobble}
-	% insert Titlepage
-	\subfile{../preamble/titlepage}
-
-	\subfile{../preamble/first}
-
-	\includepdf{../resources/Erklaerung_Bachelorarbeit.pdf}
-
-	% insert Abstract
-    \section*{Kurzzusammenfassung}
-	\subfile{../preamble/abstract-de}
-    \section*{Abstract}
-    \subfile{../preamble/abstract-en}
+    \pagenumbering{gobble}
+    % insert Titlepage
+    \subfile{../Introduction/First}
 
     \clearpage
 
-	% start page numbering
-	\tableofcontents
+    % start page numbering
+    \tableofcontents
     \clearpage
 
-	\pagenumbering{arabic}
-	\subfile{../body/introduction}
+    \pagenumbering{arabic}
+    \subfile{../Introduction/introduction}
 
-	\subfile{../body/chapter1}
+    \subfile{../Body/chapter1}
 
-    \subfile{../body/chapter2}
+    \subfile{../Body/chapter2}
 
-	\subfile{../body/conclusion}
+    \subfile{../Body/chapter3}
 
-    \subfile{../body/appendix}
     \clearpage
     %\printglossaries
-	\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
+    %\printglossary[type=\acronymtype,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
 
-	\printglossary[title=Glossar,toctitle=Glossar]
+    %\printglossary[title=Glossar,toctitle=Glossar]
     \clearpage
 
-    %\listoffootnotes
-    \listoftables
-    \listoffigures
+% bibliography in ieee style
+\begin{thebibliography}{9}
 
-    % bibliography in ieee style
-    \begin{thebibliography}{9}
+\bibitem{mycitation} ``The Title'' The general origin's title. Available: \url{www.google.com} [Accessed MONTH, DAY YEAR]
 
-    \bibitem{mycitation} ``The Title'' The general origin's title. Available: \url{www.google.com} [Accessed MONTH, DAY YEAR]
-
-    \end{thebibliography}
+\end{thebibliography}
 
 \end{document}

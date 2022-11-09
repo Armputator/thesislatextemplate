@@ -1,0 +1,143 @@
+% THIS FILE CONTAINS COMPLETE TEMPLATES OF CERTAIN DOCUMENT ELEMENTS
+% JUST COPY AND FILL OUT!
+
+\chapter{Do not compile something}
+% if you dont want to compile something just do this
+
+LOREM
+\iffalse
+THIS WON'T compile\fi
+IPSUM
+
+\chapter{Remove first indent}
+
+\noindent This will be flush with the left text border. Remove
+\verb|\noindent| to see the indent at the first sentence of any chapter.
+
+\chapter{Single Picture}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \includegraphics[width=0.75\textwidth]{../media/HM_Logo_RGB.png}
+    }
+    \captionof{figure}{A Picture}\label{THISLABEL1}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \includegraphics[width=0.75\textwidth, angle=90]{../media/HM_Logo_RGB.png}
+    }
+    \captionof{figure}{A Picture}\label{THISLABEL2}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \includegraphics[width=0.75\textwidth, angle=-90]{../media/HM_Logo_RGB.png}
+    }
+    \captionof{figure}{A Picture}\label{THISLABEL3}
+
+\end{figure}
+
+\chapter{Multifig 2 pictures}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \subfloat[]{
+            \includegraphics[width=0.45\textwidth]{../media/HM_Logo_RGB.png}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.45\textwidth]{../media/HM_Logo_RGB.png}
+        }
+    }
+    \captionof{figure}{(a) Figure a [1, fig. 1]
+    (b) Figure b [1, fig. 1]}\label{THISLABEL4}
+\end{figure}
+
+\chapter{Multifig 3 pictures}
+
+\begin{figure}[h]
+    \centering
+    \fbox{
+        \begin{tabular}{@{}c@{}}
+            \subfloat[]{
+                \includegraphics[width=0.35\textwidth]{../media/HM_Logo_RGB.png}
+            }\\
+            \subfloat[]{
+                \includegraphics[width=0.35\textwidth]{../media/HM_Logo_RGB.png}
+            }
+        \end{tabular}
+        \begin{tabular}{@{}c@{}}
+            \subfloat[]{
+                \includegraphics[width=0.5\textwidth]{../media/HM_Logo_RGB.png}
+            }
+        \end{tabular}\qquad
+    }
+    \captionof{figure}{One Big two small (a) Figure a [1, fig. 1]
+    (b) Figure b [1, fig. 1], (c) Figure c [1, fig. 1]}\label{THISLABEL5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \fbox{
+        \subfloat[]{
+            \includegraphics[width=0.15\textwidth]{../media/HM_Logo_RGB.png}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.3\textwidth]{../media/HM_Logo_RGB.png}
+        }
+        \subfloat[]{
+            \includegraphics[width=0.28\textwidth]{../media/HM_Logo_RGB.png}
+        }
+    }
+    \captionof{figure}{Equal sizes (a) Figure a [1, fig. 1]
+    (b) Figure b [1, fig. 1], (c) Figure c [1, fig. 1]}\label{THISLABEL6}
+\end{figure}
+
+\chapter{Include PDF}
+
+See tex file for command
+
+%\includepdf[pages=-, scale=1,pagecommand={}]{../media/BLA.pdf}
+
+\chapter{Table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|r|r|r|}
+        \hline
+        \textbf{Name}&\textbf{Author}&\textbf{Co-Author}&\textbf{Co-Author}\Tstrut\Bstrut\\
+        \hline
+        TEST & AB (90\%) & CD (10\%) & \Tstrut\\
+        TEST & AB (50\%) & CD (50\%) & \\
+        TEST & AB & CD & EF \Bstrut\\
+        \hline
+    \end{tabular}
+    \captionof{table}{TESTTABLE}
+\end{table}
+
+\begin{table}[H]
+    \centering
+        \begin{tabular}{|p{4cm}|p{10cm}|}
+            \hline
+            \textbf{Name}&\textbf{Synopsis}\Tstrut\Bstrut\\
+            \hline
+            TEST & Lorem ipsum dolor sit amet, consetetur\Tstrut\\
+            TESTESTESTEST & Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\\
+            TEST & Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat\Bstrut\\
+            \hline
+        \end{tabular}
+    \captionof{table}{Table fixed width}
+\end{table}
+
+\chapter{equations}
+
+\begin{equation}
+    a = \frac{1}{3}*(z+\frac{2}{cos(\alpha)}*(x*cos(\beta)-y*sin(\beta)))
+\end{equation}
+
+\begin{align*}
+    J\ddot{\theta} + M_{reg} &= mgl\sin{\theta}\\
+    J\ddot{\theta} &= M_{pendulum}
+\end{align*}

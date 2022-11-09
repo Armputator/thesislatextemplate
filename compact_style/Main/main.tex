@@ -1,0 +1,209 @@
+\documentclass[
+    paper = a4,
+    %font=arial,
+    fontsize = 12pt,
+    headinclude = true,
+    open = right,
+    twoside = true,
+    BCOR = 10mm,
+    toc = listofnumbered,
+    numbers = noendperiod,
+    ]{report}
+
+    \setcounter{tocdepth}{4}
+    \setcounter{secnumdepth}{4}
+    %--------------------------------------------%PACKAGES---------------------------------------------
+    % ORDER OF PACKAGE INCLUSIONS IS MANDATORY!
+    % CHECK http://www.macfreek.nl/memory/LaTeX_package_conflicts#Caption_and_Subfig FOR POSSIBLE CLASHES
+    % colours-----------
+    \usepackage{graphicx}
+    % graphic inclusion---------
+    \usepackage{graphics}
+    \usepackage{caption} % LOAD BEFORE SUBFIG
+    %\usepackage{subcaption} %deprecated
+    \usepackage{subfig} % LOAD AFTER CAPTION
+    \usepackage{float}
+    % encoding-------------
+    \usepackage[utf8]{inputenc}
+    % code listings------------
+    \usepackage{listings}
+    % color package-----------
+    \usepackage{xcolor}
+    % german language package-----------
+    %\usepackage[T1]{fontenc}
+    \usepackage[ngerman]{babel}
+    % line spacing-----------
+    \usepackage{setspace}
+    % pdf package----------------
+    \usepackage{pdfpages}
+    % show lof, lot and bib in toc------------
+    \usepackage{tocbibind}
+    % glossary------------
+    \usepackage{csquotes}
+    %\usepackage[acronym,section=chapter]{glossaries} %load here if hyperref problems occur
+    % datetime------------
+    \usepackage{datetime}
+    % biblatex--------------
+    %\usepackage[backend=bibtex, style=numeric, citestyle=authoryear]{biblatex}
+    % for multi file document-------------
+    \usepackage{subfiles}
+    % for list of footnotes-----------
+    \usepackage[subfigure]{tocloft}
+    % for fancy footers and headers--------------
+    \usepackage{fancyhdr}
+    % chapter title format--------------
+    \usepackage{titlesec}
+    % page layout-----------
+    \usepackage{geometry}
+    % draft watermark
+    %\usepackage{draftwatermark}
+
+    %ALWAYS LOAD HYPERREF LAST
+    % package for hyperlinks
+    \usepackage[hidelinks]{hyperref}
+    \usepackage[acronym,section=chapter]{glossaries} %load after hyperref if you want glossary words and acronyms to be clickable links
+    %--------------------------------------------%DRAFT WATERMARK LAYOUT---------------------------------------------
+
+    %\SetWatermarkScale{15}
+    %\DraftwatermarkOptions{color={[RGB]{255,200,0}}}
+
+    %--------------------------------------------%PAGE LAYOUT---------------------------------------------
+
+    \geometry{
+        a4paper,
+        total={170mm,257mm},
+        inner=25mm,
+        outer=25mm,
+        top=25mm,
+        bottom=20mm,
+        twoside=true,
+    }
+
+    \pagestyle{fancy}
+    \renewcommand{\chaptermark}[1]{% prints: X. TITLE
+        \markboth{\thechapter.\ #1}{}}
+    \fancyhf{}
+    \fancyhead[CE, CO]{\leftmark}
+    \fancyfoot[CE, CO]{\thepage}
+
+    \newcommand\Tstrut{\rule{0pt}{2.6ex}}         % = `top' strut
+    \newcommand\Bstrut{\rule[-0.9ex]{0pt}{0pt}}   % = `bottom' strut
+
+    %--------------------------------------------%CHAPTER TITLE SETUP---------------------------------------------
+
+    \makeatletter
+    \renewcommand\chapter{\thispagestyle{plain}%
+    \global\@topnum\z@
+    \@afterindentfalse
+    \secdef\@chapter\@schapter}
+    \makeatother
+
+    \titleformat{\chapter}[hang]
+        {\LARGE\bfseries}
+        {}
+        {0pt}
+        {\thechapter.\ }
+
+    \titlespacing{\chapter}{0pt}{1cm}{1cm}
+
+    \titleformat{name=\chapter,numberless}[display]
+      {\large\bfseries}
+      {}
+      {0pt}
+      {}
+
+    %--------------------------------------------%LISTINGS SETUP---------------------------------------------
+    \definecolor{lst_linenumbers}{rgb}{0.2, 0.2, 0.2}
+    \definecolor{lst_background}{rgb}{0.89, 0.89, 0.89}
+    \definecolor{lst_green}{rgb}{0,0.6,0}
+    \definecolor{lst_dark_green}{rgb}{0,0.35,0}
+
+    \lstdefinestyle{my_style}{
+        backgroundcolor=\color{lst_background},
+        commentstyle=\color{lst_green},
+        keywordstyle=\color{magenta},
+        stringstyle=\color{lst_dark_green},
+        numberstyle=\tiny\color{lst_linenumbers},
+        basicstyle=\footnotesize,
+        breaklines = true,
+        captionpos = b,
+        keepspaces = true,
+        numbers = left,
+        numbersep = 5pt,
+        showspaces = false,
+        showstringspaces = false,
+        showtabs = false,
+        tabsize = 3
+        }
+
+    \lstset{style=my_style}
+
+    \let\oldlstinline\lstinline
+    \renewcommand{\lstinline}[1]{\oldlstinline[basicstyle=\ttfamily]{#1}}
+
+    %--------------------------------------------%GLOSSARY SETUP---------------------------------------------
+    % set line spacing to 1.5
+    \onehalfspacing
+
+    \GlsSetQuote{+}
+    \glstoctrue
+    \makeglossaries
+    \setacronymstyle{long-short}
+    %--------------------------------------------% ACRONYMS---------------------------------------------
+
+    \newacronym{acr}{ACR}{\gls{acronym}}
+
+%--------------------------------------------% GLOSSARY ENTRIES---------------------------------------------
+
+\newglossaryentry{acronym}{
+    name={acronym},
+    description={An Acronym is an Abbreviation for a long word or term derived from Letters in it}
+}
+
+    %--------------------------------------------%TITLE---------------------------------------------
+    \title{TITLE}
+    \author{FIRSTNAME LASTNAME}
+    \date{\currenttime}
+    %--------------------------------------------%BEGIN---------------------------------------------
+    \begin{document}
+        \pagenumbering{gobble}
+        % insert Titlepage
+        \subfile{../Introduction/First}
+
+        % insert Abstract
+        \section*{Kurzzusammenfassung}
+        \subfile{../Introduction/Abstract-DE}
+        \section*{Abstract}
+        \subfile{../Introduction/Abstract-EN}
+
+        \clearpage
+
+        % start page numbering
+        \tableofcontents
+        \clearpage
+
+        \pagenumbering{arabic}
+        \subfile{../Introduction/introduction}
+
+        \subfile{../Body/chapter1}
+
+        \subfile{../Body/chapter2}
+
+        \subfile{../Body/conclusion}
+
+        \subfile{../Body/appendix}
+        \clearpage
+        \printglossaries
+        \printglossary[type=\acronymtype,title=Abkürzungsverzeichnis,toctitle=Abkürzungsverzeichnis]
+
+        \printglossary[title=Glossar,toctitle=Glossar]
+        \clearpage
+
+    % bibliography in ieee style
+    \begin{thebibliography}{9}
+
+    \bibitem{mycitation} ``The Title'' The general origin's title. Available: \url{www.google.com} [Accessed MONTH, DAY YEAR]
+
+    \end{thebibliography}
+
+\end{document}
