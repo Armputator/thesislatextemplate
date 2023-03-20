@@ -1,0 +1,101 @@
+\documentclass{article}
+
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	total={170mm,257mm},
+	left=25mm,
+	right=25mm,
+	top=20mm,
+	bottom=20mm
+}
+
+%========================== Dokumentensprache
+\usepackage[ngerman]{babel}
+
+
+%========================== helper Libs
+\usepackage{subfiles}
+%==========================
+
+
+%========================== Literaturverzeichniss, style ieee, dateiformat BibLaTex
+\usepackage[style=ieee]{biblatex}
+%\addbibresource{../_resources/mybib.bib}
+
+
+%========================== Verlinkungen im Dokument
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+	colorlinks=true,
+	linkcolor={black!40!black},
+	citecolor={black!100!black},
+	urlcolor={blue!60!black}
+}
+%==========================
+
+
+%https://tex.stackexchange.com/questions/50747/options-for-appearance-of-links-in-hyperref
+
+%linkcolor [red]
+%anchorcolor [black]
+%citecolor [green]
+%filecolor [cyan]
+%menucolor [red]
+%runcolor [cyan - same as file color]
+%urlcolor [magenta]
+%allcolors
+
+
+\begin{document}
+
+
+%Fontsizes
+
+%\Huge
+%\huge
+%\LARGE
+%\Large
+%\large
+%\normalsize (default)
+%\small
+%\footnotesize
+%\scriptsize
+%\tiny
+
+
+%disable Pagenumbers
+\pagenumbering{gobble}
+
+\noindent\underline{\makebox[\textwidth][s]{COURSE NAME \hfill SEMESTER NAME}}\\
+
+\huge
+\noindent TITLE\\
+
+
+\normalsize
+\noindent\textbf{Paper by FIRSTNAME LASTNAME }
+
+\noindent FACULTY NAME, UNIVERSITY NAME\\
+
+
+\section*{Abstract}
+
+\noindent Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata
+sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
+elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
+gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+%---------------------------------BIB
+%default name: References:
+%\printbibliography[title={Quellen:}]
+
+\end{document}
+
+
